@@ -1,0 +1,647 @@
+/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/pydantic/_internal/_fields.py:132: UserWarning: Field "model_name" in ChatInput has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+DEBUG:asyncio:Using selector: KqueueSelector
+INFO:     Started server process [21054]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+started
+started
+INFO:     127.0.0.1:60676 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60676 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60676 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60676 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60677 - "POST /py/llm/chat HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 406, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 70, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/_exception_handler.py", line 62, in wrapped_app
+    raise exc
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/_exception_handler.py", line 62, in wrapped_app
+    raise exc
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/amitkumar/Desktop/buildSomthing/router/llm_inference.py", line 30, in chat_with_gemini
+    logger.info(f"Received chat request with input: {chat_input.user_input}")
+  File "/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/pydantic/main.py", line 856, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'ChatInput' object has no attribute 'user_input'
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [21054]
+/Users/amitkumar/Desktop/llmpg/lib/python3.10/site-packages/pydantic/_internal/_fields.py:132: UserWarning: Field "model_name" in ChatInput has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+DEBUG:asyncio:Using selector: KqueueSelector
+INFO:     Started server process [21332]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+started
+started
+INFO:     127.0.0.1:61510 - "OPTIONS /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:61510 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- 1st law of thermodynamics
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:62874 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:62877 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:63277 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Do not include any numerical question.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:     127.0.0.1:63372 - "OPTIONS /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:63372 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:63654 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Do not include any numerical question.
+
+</INSTRUCTION>
+<TOPIC>
+- 
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:63737 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Do not include any numerical question.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:64131 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Do not include any numerical question.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:     127.0.0.1:64707 - "OPTIONS /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:64707 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:     127.0.0.1:52143 - "OPTIONS /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:52143 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:52465 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Do not include any numerical question.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:52786 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:53001 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Do not include any numerical question.
+
+</INSTRUCTION>
+<TOPIC>
+- linear lagebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:     127.0.0.1:53705 - "OPTIONS /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:53705 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Do not include any numerical question.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:54021 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Do not include any numerical question.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:54567 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Do not include any numerical question.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:54954 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Do not include any numerical question.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:     127.0.0.1:55264 - "OPTIONS /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:55264 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:55717 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:55768 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+- dont produce any code or any other programming related content.
+- dont provide any Materials information like Whiteboard/Projector, Markers/Pens,Textbook,Worksheets (optional)
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:55933 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+- dont produce any code or any other programming related content.
+- dont provide any Materials information like Whiteboard/Projector, Markers/Pens,Textbook,Worksheets (optional)
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:56234 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+- dont produce any code or any other programming related content.
+- dont provide any Materials information like Whiteboard/Projector, Markers/Pens,Textbook,Worksheets (optional)
+
+- Do not include any numerical question.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:56537 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+- dont produce any code or any other programming related content.
+- dont provide any Materials information like Whiteboard/Projector, Markers/Pens,Textbook,Worksheets (optional)
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:56559 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+- dont produce any code or any other programming related content.
+- dont provide any Materials information like Whiteboard/Projector, Markers/Pens,Textbook,Worksheets (optional)
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:     127.0.0.1:56866 - "OPTIONS /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:56866 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a math teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with easy knowledge of the math subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+- dont produce any code or any other programming related content.
+- dont provide any Materials information like Whiteboard/Projector, Markers/Pens,Textbook,Worksheets (optional)
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- linear algebra
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model
+INFO:     127.0.0.1:61055 - "OPTIONS /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Received chat request
+INFO:     127.0.0.1:61055 - "POST /py/llm/chat HTTP/1.1" 200 OK
+INFO:router.llm_inference:Final prompt: <ROLE>
+- Suppose you are a physics teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with medium knowledge of the physics subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+- you should consider the student's from  class.
+- dont produce any code or any other programming related content.
+- dont provide any Materials information like Whiteboard/Projector, Markers/Pens,Textbook,Worksheets (optional)
+
+- Also include 3 numerical question for the topic.
+
+</INSTRUCTION>
+<TOPIC>
+- relativity
+</TOPIC>
+INFO:router.llm_inference:Using model: gemini-1.5-pro
+INFO:router.llm_inference:Successfully streamed response from Gemini model

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEACHER</title>
+    <style>
+        body {
+            background-image: url('/images/background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            padding-top: 60px; /* Add space for the logo */
+        }
+        #logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 200px; /* Adjust as needed */
+            height: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        #inputContainer {
+            display: flex;
+            flex-direction: column;
+            width: 66.67vw; /* Increased to 2/3 of screen width */
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .radio-group {
+            display: flex;
+            align-items: center;
+        }
+        .radio-group label {
+            margin-left: 5px;
+        }
+        #submitButton {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        #submitButton:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #apiResponseContainer {
+            width: 66.67vw;
+            margin-bottom: 40px;
+        }
+        #apiResponse {
+            width: 100%;
+            min-height: 100px;
+            max-height: 400px;
+            overflow-y: auto;
+            border-radius: 15px;
+            border: 2px solid rgba(204, 204, 204, 0.5);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        #apiResponse strong {
+            font-weight: bold;
+        }
+        #apiResponse h2 {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+        .inline-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        .select-wrapper, .checkbox-wrapper {
+            flex: 1;
+        }
+        .select-wrapper select {
+            width: 
+    </style>
+    <script>
+        async function callApi() {
+            const submitButton = document.getElementById('submitButton');
+            submitButton.disabled = true;
+            
+            const subject = document.getElementById('subject').value;
+            const topic = document.getElementById('topic').value;
+            const knowledgeLevel = document.getElementById('knowledgeLevel').value;
+            const classLevel = document.getElementById('classLevel').value;
+            const includeNumericals = document.getElementById('includeNumericals').checked;
+            const apiResponse = document.getElementById('apiResponse');
+            
+            apiResponse.innerHTML = 'Waiting for response...';
+
+            try {
+                const response = await fetch('http://0.0.0.0:8001/py/llm/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        subject: subject,
+                        topic: topic,
+                        knowledge_level: knowledgeLevel,
+                        class_level: classLevel,
+                        include_numerical_questions: includeNumericals
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                apiResponse.innerHTML = '';
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+                    
+                    const chunk = decoder.decode(value, { stream: true });
+                    const formattedChunk = formatText(chunk);
+                    apiResponse.innerHTML += formattedChunk;
+                    
+                    apiResponse.scrollTop = apiResponse.scrollHeight;
+                }
+                apiResponse.innerHTML = formatText(apiResponse.innerHTML);
+            } catch (error) {
+                apiResponse.innerHTML = 'Error: ' + error.message;
+            } finally {
+                submitButton.disabled = false;
+            }
+        }
+
+        function formatText(text) {
+            // Format bold text
+            text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            // Format headlines
+            text = text.replace(/^## (.*?)$/gm, '<h2>$1</h2>');
+            
+            return text;
+        }
+
+        // Remove the adjustTextareaHeight and handleKeyPress functions as they're no longer needed
+    </script>
+</head>
+<body>
+    <img id="logo" src="images/logo.png" alt="Teacher Logo">
+    <div id="inputContainer">
+        <div class="input-group">
+            <div class="inline-group">
+                <div class="select-wrapper">
+                    <label for="subject">Subject:</label>
+                    <select id="subject">
+                        <option value="math">Math</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="physics">Physics</option>
+                    </select>
+                </div>
+                <div class="select-wrapper">
+                    <label for="knowledgeLevel">Knowledge Level:</label>
+                    <select id="knowledgeLevel">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="includeNumericals">
+                    <label for="includeNumericals">Include Numericals</label>
+                </div>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="topic">Topic:</label>
+            <input type="text" id="topic" placeholder="Enter the topic">
+        </div>
+        <div class="input-group">
+            <label for="classLevel">Class Level:</label>
+            <input type="text" id="classLevel" placeholder="Enter the class level">
+        </div>
+        <button id="submitButton" onclick="callApi()">Submit</button>
+    </div>
+    <div id="apiResponseContainer">
+        <div id="apiResponse"></div>
+    </div>
+</body>
+</html>

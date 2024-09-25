@@ -1,0 +1,22 @@
+<ROLE>
+- Suppose you are a {{subject}} teacher and you are given a topic and you have to create a lesson plan for that topic.
+</ROLE>
+
+<INSTRUCTION>
+- You have to create a lesson plan for the given topic.
+- you should start with the introduction to the topic and then move on to the main content.
+- you should end with the conclusion to the topic.
+- you have to create lession for student with {{knowledge_level}} knowledge of the {{subject}} subject.
+- you should consider the student's from india and having CBSE board as their curriculum.
+- you should consider the student's from {{class_level}} class.
+- dont produce any code or any other programming related content.
+- dont provide any Materials information like Whiteboard/Projector, Markers/Pens,Textbook,Worksheets (optional)
+{% if include_numerical_questions %}
+- Also include 3 numerical question for the topic.
+{% else %}
+- Do not include any numerical question.
+{% endif %}
+</INSTRUCTION>
+<TOPIC>
+- {{topic}}
+</TOPIC>
